@@ -10,7 +10,6 @@ const guessField = document.querySelector('.guessField');
 
 let guessCount = 1;
 let resetButton;
-guessField.focus();
 
 function checkGuess() {
   let userGuess = Number(guessField.value);
@@ -20,7 +19,7 @@ function checkGuess() {
   guesses.textContent += userGuess + ' ';
 
   if (userGuess === randomNumber) {
-    lastResult.textContent = 'Congratulations! You read my mind!';
+    lastResult.textContent = 'Congratulations! You read my mind';
     lastResult.style.backgroundColor = 'green';
     lowOrHi.textContent = '';
     setGameOver();
@@ -28,12 +27,12 @@ function checkGuess() {
     lastResult.textContent = 'GAME OVER';
     setGameOver();
   } else {
-    lastResult.textContent = 'Wrong!';
+    lastResult.textContent = 'Try Again!';
     lastResult.style.backgroundColor = 'red';
     if(userGuess < randomNumber) {
-      lowOrHi.textContent = 'Guess Lower!';
+      lowOrHi.textContent = 'Last guess was too low!';
     } else if(userGuess > randomNumber) {
-      lowOrHi.textContent = 'Guess Higher!';
+      lowOrHi.textContent = 'Last guess was too high!';
     }
   }
 
@@ -41,7 +40,6 @@ function checkGuess() {
   guessField.value = '';
   guessField.focus();
 }
-
 guessSubmit.addEventListener('click', checkGuess);
 
 function setGameOver() {
@@ -52,7 +50,6 @@ function setGameOver() {
   document.body.append(resetButton);
   resetButton.addEventListener('click', resetGame);
 }
-
 function resetGame() {
   guessCount = 1;
 
